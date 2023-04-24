@@ -1,0 +1,226 @@
+// ============================================
+// Control Statements (p. 12)
+
+
+double income = 0, tax = 0; 
+
+cout << "Please enter the taxable income: ";
+cin  >> income;
+
+if(income <= 10000)
+  tax = 0.02 * income;
+else
+  tax = 0.08 * (income - 10000) + 10000 * 0.02;
+
+cout << "Tax amount: $" << tax << "\n";
+
+
+
+
+
+// ============================================
+// Control Statements (p. 28)
+
+
+int a = 0, b = 0;
+
+if((a > 10) && (b = 1))
+  ;  
+cout << b << "\n"; 
+
+if((a > 10) || (b = 5))
+  ; 
+cout << b << "\n"; 
+
+
+
+
+
+// ============================================
+// Control Statements (p. 35)
+
+
+int y = 0, m = 0;
+cin >> y >> m;
+int d = 0;
+
+if(m == 1 || m == 3 || m == 5 || m == 7 ||
+   m == 8 || m == 10 || m == 12)
+  d = 31;
+else if(m == 4 || m == 6 ||
+        m == 9 || m == 11)
+  d = 30;
+else if ((y % 400 == 0) || 
+         (y % 4 == 0 && (y % 100 != 0)))
+  d = 29;
+else
+  d = 28;  
+cout << d << "\n";
+
+
+
+
+
+// ============================================
+// Control Statements (p. 35)
+
+int y = 0, m = 0;
+cin >> y >> m;
+int d = 0;
+
+switch(m)
+{
+  case 1: case 3: case 5: case 7: 
+  case 8: case 10: case 12:
+    d = 31;
+    break;
+  case 4: case 6: case 9: case 11:
+    d = 30;
+    break;
+  case 2:
+    if((y % 400 == 0) || 
+       (y % 4 == 0 && (y % 100 != 0)))
+      d = 29;
+    else
+      d = 28; 
+}
+cout << d << "\n";
+
+
+
+
+
+// ============================================
+// Control Statements (p. 37)
+
+int sum = 0;
+int i = 1;
+
+while(i <= 100)
+{
+  sum = sum + i;
+  i = i + 1;
+}
+
+cout << sum << "\n";
+
+
+
+
+
+// ============================================
+// Control Statements (p. 37)
+
+int exit = 0;
+// do something
+cout << "Press 1 to exit: ";
+cin >> exit;
+
+while(exit != 1)
+{
+  // do something
+  cout << "Press 1 to exit: ";
+  cin >> exit;
+}
+
+
+
+
+
+
+// ============================================
+// Control Statements (p. 49)
+
+int sum = 0;
+for(int i = 1; i <= 100; i++)
+  sum = sum + i;
+cout << sum;
+
+
+
+
+// ============================================
+// Control Statements (p. 50)
+
+for(int i = 0, j = 0; i < 10, j > -5; i++, j--)
+  cout << i << " " << j << "\n";
+
+
+
+
+// ============================================
+// Control Statements (p. 56)
+
+for(int x = 1; x <= 3; x++)
+{
+  for(int y = 1; y <= 3; y++)
+    cout << "(" << x << ", " << y << ") ";
+  cout << "\n";
+}
+
+
+
+
+
+// ============================================
+// Control Statements (p. 58)
+
+for(int a = 1; a <= 100; a++)
+{
+  if(a % 10 != 0)
+    cout << a << " ";
+}
+
+
+
+
+// ============================================
+// Control Statements (p. 58)
+
+for(int a = 1; a <= 100; a++)
+{
+  if(a % 10 == 0)
+    continue;
+  cout << a << " ";
+}
+
+
+
+
+// ============================================
+// Control Statements (p. 59)
+
+int a = 0, b = 0;
+while(a <= 10)
+{
+  while(b <= 10)
+  {
+    if(b == 5)
+      break;
+    cout << a * b << "\n";
+    b++;
+  }
+  a++;
+}
+cout << a << "\n"; // ?
+
+
+
+
+
+// ============================================
+// Control Statements (p. 60)
+
+int exit = 0;
+
+while(true)
+{
+  // do something
+  cout << " Press 1 to exit: ";
+  cin >> exit;
+  if(exit == 1)
+    break;
+}
+
+
+

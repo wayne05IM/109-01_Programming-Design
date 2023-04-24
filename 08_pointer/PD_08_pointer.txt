@@ -1,0 +1,479 @@
+// ============================================
+// Pointers (p. 4)
+
+int* p1 = 0;
+cout << sizeof(p1) << endl; // 8
+double* p2 = 0;
+cout << sizeof(p2) << endl; // 8
+
+
+
+
+
+
+// ============================================
+// Pointers (p. 12)
+
+int a = 10;
+int* p1 = &a;
+cout << "value of a = " << a << endl;
+cout << "value of p1 = " << p1 << endl;
+cout << "address of a = " << &a << endl;
+cout << "address of p1 = " << &p1 << endl;
+cout << "value of the variable pointed by p1 = " << *p1 << endl;
+
+
+
+
+
+
+
+// ============================================
+// Pointers (p. 15)
+
+// left
+int a = 10;
+int* ptr = &a;
+cout << *ptr; // ?
+*ptr = 5; 
+cout << a;    // ?
+a = 18; 
+cout << *ptr; // ?
+
+
+// right
+int a = 10;
+int* ptr1; 
+int* ptr2;
+ptr1 = ptr2 = &a;
+cout << *ptr1; // ?
+*ptr2 = 5;     
+cout << *ptr1; // ?
+(*ptr1)++; 
+cout << a;     // ?
+
+
+
+
+
+
+
+// ============================================
+// Pointers (p. 16)
+
+int* ptr;
+cout << *ptr; // ?
+
+int* p2 = nullptr;
+cout << "value of p2 = " << p2 << "\n";
+cout << "address of p2 = " << &p2 << "\n";
+cout << "the variable pointed by p2 = " << *p2 << "\n";
+
+
+
+
+
+// ============================================
+// Pointers (p. 17)
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  int* ptrArray[10000];
+  for(int i = 0; i < 10000; i++)
+    cout << i << " " << *ptrArray[i] << "\n";
+  return 0;
+}
+
+
+
+
+
+
+// ============================================
+// Pointers (p. 22)
+
+int c = 10;
+int& d = c; // declare d as c¡¦s reference
+d = 20;
+cout << c << endl; // 20
+
+
+
+
+
+
+// ============================================
+// Pointers (p. 23)
+
+void swap(int& x, int& y);
+int main()
+{
+  int a = 10, b = 20;
+  cout << a << " " << b << "\n";
+  cout << &a << "\n"; 
+  swap(a, b);
+  cout << a << " " << b << "\n"; 
+}	
+void swap(int& x, int& y)
+{
+  cout << &x << "\n"; 
+  int temp = x;
+  x = y;
+  y = temp;
+}
+
+
+
+
+
+
+// ============================================
+// Pointers (p. 25)
+
+void swap(int* ptrA, int* ptrB)
+{
+  int temp = *ptrA;
+  *ptrA = *ptrB;
+  *ptrB = temp;
+}
+
+
+
+
+
+// ============================================
+// Pointers (p. 31)
+
+void swap(int* ptrA, int* ptrB)
+{
+  int* temp = ptrA;
+  ptrA = ptrB;
+  ptrB = temp;
+}
+
+
+
+
+
+
+// ============================================
+// Pointers (p. 57)
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  for(int i = 0; ; i++)
+  {
+    int* ptr = new int[100000];
+    cout << i << "\n";
+    // delete [] ptr;
+  }
+  return 0;	
+}
+
+
+
+
+
+
+// ============================================
+// Pointers (p. 61)
+
+int main()
+{
+  int r = 3;
+  int** array = new int*[r];
+  for(int i = 0; i < r; i++)
+  {
+    array[i] = new int[i + 1];
+    for(int j = 0; j <= i; j++)
+      array[i][j] = j + 1;
+  }
+  print(array, r); // later
+  // some delete statements
+  return 0;	
+}
+
+
+
+
+
+// ============================================
+// Pointers (p. 71)
+
+void print(int** arr, int r)
+{
+  for(int i = 0; i < r; i++)
+  {
+    for(int j = 0; j <= i; j++)
+      cout << arr[i][j] << " ";
+    cout << "\n";
+  }
+}
+
+
+
+
+
+// ============================================
+// Pointers (p. 72)
+
+void print1D(int* arr, int n)
+{
+  for(int i = 0; i < n; i++)
+    cout << arr[i] << " ";
+  cout << "\n";
+}
+int print(int** arr, int r)
+{
+  for(int i = 0; i < r; i++)
+  {
+    print1D(arr[i], i + 1);
+  }
+}
+
+
+
+
+
+
+// ============================================
+// Pointers (p. 75)
+
+int a = 10;
+int* ptr = &a;
+cout << ptr++;  
+  // just an address
+  // we don't know what's here
+cout << *ptr; 
+  // dangerous! 
+
+
+
+
+
+// ============================================
+// Pointers (p. 76)
+
+double a[3] = {10.5, 11.5, 12.5};
+double* b = &a[0];
+cout << *b << " " << b << endl;  // 10.5
+b = b + 2; 
+cout << *b << " " << b << endl;  // 12.5
+b--;
+cout << *b << " " << b << endl;  // 11.5
+
+
+
+
+
+// ============================================
+// Pointers (p. 77)
+
+double a[3] = {10.5, 11.5, 12.5};
+double* b = &a[0];
+double* c = &a[2];
+cout << c - b << endl; // 2, not 16!
+
+
+
+
+
+// ============================================
+// Pointers (p. 78)
+
+int x[3] = {1, 2, 3};
+for(int i = 0; i < 3; i++)
+  cout << *(x + i) << " "; // 1 2 3
+for(int i = 0; i < 3; i++)
+  cout << *(x++) << " "; // 1 2 3
+for(int i = 0; i < 3; i++)
+  cout << *(x + i) << " "; // unpredictable
+
+
+
+
+
+// ============================================
+// Pointers (p. 79)
+
+int x[3] = {1, 2, 3};
+for(int i = 0; i < 3; i++)
+  cout << x[i] << " "; // x[i] == *(x + i) 
+for(int i = 0; i < 3; i++)
+  cout << *(x + i) << " "; // 1 2 3
+
+int x[3] = {1, 2, 3};
+for(int i = 0; i < 3; i++)
+  cout << *(x++) << " "; // error!
+
+
+
+
+
+// ============================================
+// Pointers (p. 80)
+
+#include <iostream>
+using namespace std;
+int main()
+{
+  int a[5] = {0};
+  for(int i = 0; i < 5; i++)
+    cin >> a[i];
+  int* p = a; 
+  for(int i = 0; i < 5; i++) {
+    *p += 3;
+    p++;
+  }
+  for(int i = 0; i < 5; i++)
+    cout << a[i] << " ";
+  return 0;
+}
+
+
+
+
+
+// ============================================
+// Pointers (p. 82)
+
+void insertionSort(int array[], const int n) 
+{
+  if(n > 1) 
+  {
+    insertionSort(array + 1, n - 1);	
+    int num1 = array[0];
+    int i = 1;
+    for(; i < n; i++) 
+    {
+      if(array[i] < num1)
+        array[i - 1] = array[i];
+      else
+        break;
+    }
+    array[i - 1] = num1;
+  }
+}
+
+
+
+
+
+// ============================================
+// Pointers (p. 83)
+
+#include <iostream>
+using namespace std;
+int* firstNeg(int a[], const int n) {
+  for(int i = 0; i < n; i++) {
+    if(a[i] < 0)
+      return &a[i]; 
+  } // what if a[i] >= 0 for all i?
+} 
+int main()
+{
+  int a[5] = {0};
+  for(int i = 0; i < 5; i++)
+    cin >> a[i];
+  int* p = firstNeg(a, 5);
+  cout << *p << " " << p - a << "\n";
+  return 0; // what is p - a?
+}
+
+
+
+
+
+
+// ============================================
+// Pointers (p. 84)
+
+#include <iostream>
+using namespace std;
+int* firstNeg(int a[], const int n) {
+  for(int i = 0; i < n; i++) {
+    if(a[i] < 0)
+      return &a[i]; 
+  } 
+  return nullptr;
+}
+int main()
+{
+  int a[5] = {0};
+  for(int i = 0; i < 5; i++)
+    cin >> a[i];
+  int* p = firstNeg(a, 5);
+  if(p != nullptr)
+    cout << *p << " " << p - a << "\n";
+  return 0; 
+}
+
+
+
+
+
+
+
+// ============================================
+// Pointers (p. 85)
+
+#include <iostream>
+using namespace std;
+int* firstNeg(int a[], const int n) {
+  for(int i = 0; i < n; i++) {
+    if(a[i] < 0)
+      return &a[i]; 
+  } 
+  return nullptr;
+}
+int main()
+{
+  int a[5] = {0};
+  for(int i = 0; i < 5; i++)
+    cin >> a[i];
+  int* p = firstNeg(a, 5);
+  if(p != nullptr)
+    *p = -1 * *p; // *p at the LHS of =
+  return 0; 
+}
+
+
+
+
+
+
+
+// ============================================
+// Pointers (p. 86)
+
+#include <iostream>
+using namespace std;
+const int* firstNeg
+           (const int a[], const int n) {
+  for(int i = 0; i < n; i++) {
+    if(a[i] < 0)
+      return &a[i]; 
+  } 
+  return nullptr;
+}
+int main()
+{
+  int a[5] = {0};
+  for(int i = 0; i < 5; i++)
+    cin >> a[i];
+  const int* p = firstNeg(a, 5);
+  if(p != nullptr)
+    cout << *p << "\n"; // OK
+  return 0; 
+}
+
+
+
+
+

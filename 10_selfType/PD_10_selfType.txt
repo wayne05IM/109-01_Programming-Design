@@ -1,0 +1,381 @@
+// ============================================
+// Self-defined data types (p. 4)
+
+void vector(int x1, int y1, int x2, 
+  int y2, int& rx, int& ry)
+{
+  rx = x2 - x1;
+  ry = y2 - y1;
+}
+int main()
+{
+  int x1 = 0, x2 = 0; 
+  int y1 = 10, y2 = 20;
+  int rx = 0, ry = 0;
+  vector(x1, y1, x2, y2, rx, ry);
+  cout << rx << " " << ry << "\n";
+  return 0;
+}
+
+
+
+
+
+
+
+// ============================================
+// Self-defined data types (p. 7)
+
+Point vector(Point A, Point B)
+  // Point as parameters
+{
+  Point vecXY;
+  vecXY.x = B.x - A.x;
+  vecXY.y = B.y - A.y;
+  return vecXY; // return a Point
+}
+int main()
+{
+  Point a = {0, 0}, b = {10, 20}; 
+  Point vecAB = vector(a, b);
+  cout << vecAB.x << " "; 
+  cout << vecAB.y << "\n";
+  return 0; 
+}
+
+
+
+
+
+
+// ============================================
+// Self-defined data types (p. 11)
+
+struct Point {
+  int x;
+  int y;
+  int z;
+};
+int main() {
+  Point A[100];
+  for(int i = 0; i < 50; i++)
+    A[i] = {i}; 
+  for(int i = 0; i < 100; i++)
+    cout << A[i].x << " " << A[i].y 
+         << " " << A[i].z << "\n";
+  return 0;
+}
+
+
+
+
+
+
+// ============================================
+// Self-defined data types (p. 12)
+
+struct Point
+{
+  int x;
+  int y;	
+};
+void reflect(Point& a)
+{
+  int temp = a.x;
+  a.x = a.y;
+  a.y = temp;
+}
+int main()
+{
+  Point a = {10, 20};
+  cout << a.x << " " 
+       << a.y << "\n";
+  reflect(a);
+  cout << a.x << " " 
+       << a.y << "\n";
+  return 0;
+}
+
+
+
+
+// ============================================
+// Self-defined data types (p. 14)
+
+struct Point {
+  int x;
+  int y;
+};
+int main() {
+  Point a[10]; 
+  cout << sizeof(Point) << " " << sizeof(a) << "\n";
+  cout << &a << "\n";
+  for(int i = 0; i < 10; i++)
+    cout << &a[i] << " " << &a[i].x << " " << &a[i].y << "\n";
+  Point* b = new Point[20];
+  cout << sizeof(b) << "\n";
+  delete [] b;
+  b = NULL;
+  return 0;
+}
+
+
+
+
+
+
+// ============================================
+// Self-defined data types (p. 22)
+
+#include <iostream>
+#include <ctime>
+using namespace std;
+
+int main()
+{
+  clock_t sTime = clock();
+  for(int i = 0; i < 1000000000; i++)
+    ;
+  clock_t eTime = clock();
+  
+  cout << sTime << " " << eTime << "\n";
+  return 0;
+}
+
+
+
+
+
+// ============================================
+// Self-defined data types (p. 28)
+
+struct Point
+{
+  int x;
+  int y;
+  double distOri()
+  {
+    return sqrt(pow(x, 2) + pow(y, 2));
+  }
+}; 
+
+int main()
+{
+  Point a = {3, 4};
+  cout << a.distOri(); 
+  return 0;
+}
+
+
+
+
+
+
+// ============================================
+// Self-defined data types (p. 29)
+
+struct Point
+{
+  int x;
+  int y;
+  double distOri();
+}; 
+double Point::distOri() // scope resolution
+{                       // is required
+  return sqrt(pow(x, 2) + pow(y, 2));
+}
+
+
+
+
+
+
+
+// ============================================
+// Self-defined data types (p. 32)
+
+struct Point
+{
+  int x;
+  int y;	
+  void reflect();
+  void print();
+};
+void Point::reflect()
+{
+  int temp = x;
+  x = y;
+  y = temp;
+}
+void Point::print()
+{
+  cout << x << " " << y << "\n";
+}
+int main()
+{
+  Point a = {10, 20};
+  Point b = {5, 2};
+  a.print();
+  b.print();
+  a.reflect();
+  a.print();
+  b.print();
+  return 0;
+}
+
+
+
+
+
+
+// ============================================
+// Self-defined data types (p. 37)
+
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+int main()
+{
+  int rn = 0;
+  for(int i = 0; i < 10; i++)
+  {
+    rn = rand();
+    cout << rn << " ";
+  }	
+  return 0;
+}
+
+
+
+
+
+// ============================================
+// Self-defined data types (p. 39)
+
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+int main() 
+{
+  srand(0);
+  int rn = 0;
+  for(int i = 0; i < 10; i++)
+  {
+    rn = rand();
+    cout << rn << " ";
+  }	
+  return 0;
+}
+
+
+
+
+
+
+// ============================================
+// Self-defined data types (p. 41)
+
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+int main()
+{
+  srand(time(nullptr)); // good
+  int rn = 0;
+  for(int i = 0; i < 10; i++)
+  {
+    rn = rand();
+    cout << rn << " ";
+  }
+  return 0;
+}
+
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+int main()
+{
+  int rn = 0;
+  for(int i = 0; i < 10; i++)
+  {
+    srand(time(nullptr)); // bad
+    rn = rand();
+    cout << rn << " ";
+  }
+  return 0;
+}
+
+
+
+
+
+
+// ============================================
+// Self-defined data types (p. 42)
+
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+int main()
+{
+  srand(time(0)); 
+  int rn = 0;
+  for(int i = 0; i < 10; i++)
+  {
+    rn = ((rand() % 10)) + 100;
+    cout << rn << " ";
+  }
+  return 0;
+}
+
+rn = (static_cast<double>(rand() % 501)) / 100;
+
+
+
+
+
+
+
+// ============================================
+// Self-defined data types (p. 43)
+
+struct Randomizer
+{
+  int a;
+  int b;
+  int c;
+  int cur;
+  int rand();
+};
+int Randomizer::rand()
+{
+  cur = (a * cur + b) % c;
+  return current;
+}
+
+
+
+
+
+// ============================================
+// Self-defined data types (p. 44)
+
+int main()
+{
+  Randomizer r1 = {10, 4, 31, 0};
+  for(int i = 0; i < 10; i++)
+    cout << r1.rand() << " ";
+  cout << "\n";
+  Randomizer r2 = {10, 7, 32, 0};
+  for(int i = 0; i < 10; i++)
+    cout << r2.rand() << " ";
+  return 0;
+}

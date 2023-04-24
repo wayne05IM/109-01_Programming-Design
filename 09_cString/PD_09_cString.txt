@@ -1,0 +1,659 @@
+// ============================================
+// C Strings (p. 4)
+
+int main()
+{
+  char c = '0';
+  cout << static_cast<int>(c) << " ";
+  c = 'A';
+  cout << static_cast<int>(c) << " ";
+  c = '\n';
+  cout << static_cast<int>(c) << " ";
+  return 0;
+}
+
+int main()
+{
+  char c = 48;
+  cout << c << " ";
+  c += 10;
+  cout << c << " ";
+  if(c > 50)
+    cout << c << " ";
+  return 0;
+}
+
+
+
+
+
+// ============================================
+// C Strings (p. 5)
+
+int main()
+{
+  int a = 0, b = 0;
+  char c = 0;
+
+  do
+  {
+    cout << "Enter two integers: ";
+    cin >> a >> b;
+    cout << "Add? ";
+    cin >> c;
+  } while(c != 'Y' && c != 'y');
+  cout << a + b << "\n";
+
+  return 0;
+}
+
+
+
+
+
+// ============================================
+// C Strings (p. 6)
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  char c = 0;
+  while(cin >> c)
+  {
+    if(65 <= c && c <= 90)
+      cout << static_cast<char>(c + 32);
+    else
+      cout << c;
+    cout << "\n";
+  }
+  return 0;
+}
+
+
+
+
+
+// ============================================
+// C Strings (p. 8)
+
+#include <iostream>
+#include <cctype>
+using namespace std;
+
+int main()
+{
+  char c = 0;
+  while(cin >> c)
+    cout << static_cast<char>(tolower(c)) << "\n";
+  return 0;
+}
+
+
+
+
+
+
+
+// ============================================
+// C Strings (p. 10)
+
+#include <iostream>
+#include <iomanip>
+#include <cctype>
+using namespace std;
+
+int main()
+{
+  cout << "   0123456789\n";
+  for(int i = 30; i <= 126; i++) 
+  {
+    if(i % 10 == 0)
+      cout << setw(2) << i / 10 << " ";
+    if(isprint(i))
+      cout << static_cast<char>(i);
+    else
+      cout << " ";
+    if(i % 10 == 9)
+      cout << "\n";
+  }  
+  return 0;
+}
+
+
+
+
+// ============================================
+// C Strings (p. 14)
+
+#include <iostream>
+using namespace std;
+
+const int LEN = 10;
+int main()
+{
+  char s[LEN] = {0};
+  int n = 0;
+  do
+  {
+    cin >> s[n];
+    n++;
+  } while(s[n - 1] != '#' && n < LEN);
+  for(int i = 0; i < n - 1; i++)
+    cout << s[i];
+  return 0;
+}
+
+
+
+
+
+// ============================================
+// C Strings (p. 15)
+
+char str[10]; 
+cin >> str; // if we type "abcde"
+cout << str[0]; // a
+cout << str[2]; // c
+
+
+
+
+
+// ============================================
+// C Strings (p. 16)
+
+int values[5] = {0};
+cout << values; // an address
+char str[10]; 
+cin >> str; // if we type "abcde"
+cout << str; // abcde
+
+
+
+
+
+// ============================================
+// C Strings (p. 18)
+
+char a[100] = "abcde FGH";
+cout << a << "\n"; // abcde FGH
+char b[100] = "abcde\0 FGH";
+cout << b << "\n"; // abcde
+
+
+
+
+
+// ============================================
+// C Strings (p. 20)
+
+#include <iostream>
+using namespace std;
+
+const int LEN = 10;
+int main()
+{
+  char s[LEN] = {0};
+  cin >> s;
+  cout << s << "\n";
+  return 0;
+}
+
+
+
+
+
+// ============================================
+// C Strings (p. 22)
+
+char c[100] = {0};
+cin >> c; // "123456789"
+cin >> c; // "abcde";
+cout << c << "\n"; // "abcde"
+c[5] = '*';
+cout << c << "\n"; // "abcde*789"
+
+
+
+
+
+// ============================================
+// C Strings (p. 24)
+
+char a1[100] = {0};
+cin >> a1; // "this is a string"
+cout << a1; // "this"
+
+char a2[100] = {'a', 'b', ' ', 'c', '\0', 'e'};
+cout << a2; // ab c
+
+
+
+
+
+// ============================================
+// C Strings (p. 25)
+
+char a[100] = {0};
+char b[100] = {0};
+cin >> a >> b; // this is
+cout << a << "\n"; // this
+cout << b << "\n"; // is
+
+char a[100];
+cin.getline(a, 100); // Hi, it's me
+cout << a << "\n"; // Hi, it's me
+
+
+
+
+
+// ============================================
+// C Strings (p. 26)
+
+char a[100] = {0};
+while(cin.getline(a, 100))
+{
+  int i = 0;
+  int spaceCount = 0;
+
+  while(a[i] != '\0')
+  {
+    if(a[i] == ' ')
+      spaceCount++;
+    i++;
+  }
+  cout << spaceCount << "\n";
+}
+
+
+
+
+
+// ============================================
+// C Strings (p. 27)
+
+char name[4][10] = {"John", "Mikasa", "Eren", "Armin"};
+cout << name << "\n"; // an address
+cout << name[1] << "\n";
+cin >> name[2];
+cout << name[2][0] << "\n";
+
+
+
+
+
+// ============================================
+// C Strings (p. 28)
+
+char s[100] = "12345";
+char* p = s;
+cout << p << "\n"; 
+cin >> p; // or s
+cout << s; // or p
+
+char s[100] = "12345";
+char* p = s;
+cout << p + 2 << "\n"; 
+
+
+
+
+
+// ============================================
+// C Strings (p. 30)
+
+char* p = "12345";
+cout << p + 2 << "\n"; // 345
+
+
+
+
+
+
+// ============================================
+// C Strings (p. 33)
+
+#include <iostream>
+using namespace std;
+
+int main(int argc, char* argv[])
+{
+  for(int i = 0; i < argc; i++)
+    cout << argv[i] << "\n";
+  return 0;
+}
+
+
+
+
+
+// ============================================
+// C Strings (p. 38)
+
+char* p = new char[100];
+cin >> p;
+cout << strlen(p);
+p[3] = '\0';
+cout << strlen(p + 1);
+delete [] p;
+
+char* p = "12345";
+cout << strlen(p) << "\n";
+char a[100] = "1234567";
+cout << strlen(a) << "\n";
+
+
+
+
+
+// ============================================
+// C Strings (p. 39)
+
+char* p = "12345";
+cout << strlen(p) << "\n";
+char a[100] = "1234567890";
+cout << strlen(a) << "\n";
+cout << sizeof(a) << "\n";
+cout << sizeof(a + 2) << "\n";
+
+
+
+
+
+// ============================================
+// C Strings (p. 41)
+
+char a[100] = "1234567890";
+char* p = strchr(a, '8');
+if(strchr(a, 'a') == nullptr)
+  cout << "!!!\n";
+cout << strchr(a, '4') << "\n";
+cout << strchr(a, '4') - a;
+
+
+
+
+
+// ============================================
+// C Strings (p. 42)
+
+char a[100] = "this is a book";
+char* p = strchr(a, ' ');
+while(p != nullptr)
+{
+  *p = '_';
+  p = strchr(p, ' '); // why p?
+}
+cout << a;
+
+
+
+
+
+// ============================================
+// C Strings (p. 48)
+
+char a[100] = "this is a book";
+char* p = strstr(a, "is");
+while(p != nullptr)
+{
+  *p = 'I'; // not p = "IS"!
+  *(p + 1) = 'S';  
+  p = strstr(p, "is");
+}
+cout << a;
+
+
+
+
+// ============================================
+// C Strings (p. 56)
+
+char a[100] = "1234";
+cout << atoi(a) * 2 << "\n";
+char b[100] = "-12.34";
+cout << atof(b) / 2 << "\n";
+
+char a[100] = {0};
+itoa(123, a, 2);
+cout << a << "\n";
+itoa(123, a, 10);
+cout << a[2] << " " << a << "\n";
+
+
+
+
+// ============================================
+// C Strings (p. 57)
+
+char a[100] = "the";
+char b[100] = "they";
+char c[100] = "them";
+cout << strcmp(a, b) << "\n";
+cout << strcmp(b, c) << " " << strncmp(b, c, 2);
+
+
+
+
+// ============================================
+// C Strings (p. 58)
+
+char a[100] = "watermelon";
+char b[100] = "orange";
+cout << a << "\n";
+strcpy(a, b);
+cout << a << "\n";
+
+char a[100] = "watermelon";
+char b[100] = "orange";
+cout << a << "\n";
+strcpy(a, b);
+cout << a + 7 << "\n"; // ?
+
+
+
+
+// ============================================
+// C Strings (p. 57)
+
+char a[100] = "the";
+char b[100] = "they";
+char c[100] = "them";
+cout << strcmp(a, b) << "\n";
+cout << strcmp(b, c) << " " << strncmp(b, c, 2);
+
+
+
+
+// ============================================
+// C Strings (p. 58)
+
+char a[100] = "watermelon";
+char b[100] = "orange";
+cout << a << "\n";
+strcpy(a, b);
+cout << a << "\n";
+
+char a[100] = "watermelon";
+char b[100] = "orange";
+cout << a << "\n";
+strcpy(a, b);
+cout << a + 7 << "\n"; // ?
+
+
+
+
+// ============================================
+// C Strings (p. 60)
+
+char a[100] = "this is a book";
+char* p = strstr(a, "is");
+while(p != nullptr)
+{
+  strcpy(p, "IS");
+  p = strstr(p, "is");
+}
+cout << a;
+
+
+
+
+// ============================================
+// C Strings (p. 63)
+
+char a[100] = "watermelon";
+char b[100] = "orange";
+cout << a << "\n";
+strcat(a, b);
+cout << a << "\n";
+
+
+
+
+// ============================================
+// C Strings (p. 65)
+
+char a[15] = "watermelon";
+char b[100] = "orange";
+cout << a << "\n";
+strcat(a, b); // dangerous!
+cout << a << "\n";
+
+char* a;
+char b[100] = "orange";
+strcat(a, b); // dangerous!
+
+
+
+
+
+// ============================================
+// C Strings (p. 66)
+
+char a[15] = "watermelon";
+char b[100] = "orange";
+strncat(a, b, sizeof(a) - strlen(a) - 1);
+cout << a << "\n";
+
+
+
+
+// ============================================
+// C Strings (p. 68)
+
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+const int CNT = 4;
+const int LEN = 10;
+
+void swapName(char* n1, char* n2)
+{
+  char temp[LEN] = {0};
+  strcpy(temp, n1);
+  strcpy(n1, n2);
+  strcpy(n2, temp);
+}
+
+int main()
+{
+  char name[CNT][LEN] 
+    = {"John", "Mikasa", "Eren", "Armin"};
+
+  for(int i = 0; i < CNT; i++)
+    for(int j = 0; j < CNT - i - 1; j++)
+      if(strcmp(name[j], name[j + 1]) > 0)
+        swapName(name[j], name[j + 1]);
+
+  for(int i = 0; i < CNT; i++)
+    cout << name[i] << " ";
+    
+  return 0;
+}
+
+
+
+
+
+// ============================================
+// C Strings (p. 85)
+
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+const int CNT = 4;
+const int LEN = 10;
+
+void swapPtr(char*& p1, char*& p2)
+{
+  char* temp = p1;
+  p1 = p2;
+  p2 = temp;
+}
+
+int main()
+{
+  char name[CNT][LEN] 
+    = {"John", "Mikasa", "Eren", "Armin"};
+  char* ptr[CNT] 
+    = {name[0], name[1], name[2], name[3]};
+  
+  for(int i = 0; i < CNT; i++)
+    for(int j = 0; j < CNT - i - 1; j++)
+      if(strcmp(ptr[j], ptr[j + 1]) > 0)
+        swapPtr(ptr[j], ptr[j + 1]);
+        
+  for(int i = 0; i < CNT; i++)
+    cout << ptr[i] << " ";
+    
+  return 0;
+}
+
+
+
+
+// ============================================
+// C Strings (p. 102)
+
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+const int CNT = 100;
+const int WORD_LEN = 50;
+const int SEN_LEN = 1000;
+
+int main()
+{
+  char url[SEN_LEN];
+  char delim[] = ".\\";
+  char word[CNT][WORD_LEN] = {0};
+  int wordCnt = 0;
+
+  cin >> url;
+  char* start = strtok(url, delim);
+  while(start != nullptr)
+  {
+    strcpy(word[wordCnt], start);
+    wordCnt++;
+    start = strtok(nullptr, delim);
+  }
+  
+  for(int i = 0; i < wordCnt; i++)
+    cout << word[i] << " ";
+
+  return 0;
+}
+
+
+
+
+
+
+
+

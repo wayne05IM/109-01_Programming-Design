@@ -1,0 +1,384 @@
+// ============================================
+// Variables and Arrays (p. 7)
+
+#include <iostream>
+#include <climits> 
+using namespace std; 
+
+int main()
+{
+  cout << INT_MIN << " " << INT_MAX << "\n";
+ 	
+  return 0; 
+}
+
+
+
+
+
+// ============================================
+// Variables and Arrays (p. 8)
+
+cout << "int " << sizeof(int) << "\n";
+cout << "char " << sizeof(char) << "\n";
+cout << "bool " << sizeof(bool) << "\n";
+
+short s = 0;
+cout << "short int " << sizeof(s) << "\n";
+long l = 0;
+cout << "long int " << sizeof(l) << "\n";
+
+cout << "unsigned short int " << sizeof(unsigned short) << "\n";
+cout << "unsigned int " << sizeof(unsigned) << "\n";
+cout << "unsigned long int " << sizeof(unsigned long) << "\n";
+
+
+
+
+
+
+
+// ============================================
+// Variables and Arrays (p. 9)
+
+int i = 0;
+short sGood = 32765;
+
+while (i < 10)
+{
+  short sBad = sGood + i;
+  cout << sGood + i << " " << sBad << "\n";
+  i = i + 1;
+}
+
+
+
+
+
+
+
+// ============================================
+// Variables and Arrays (p. 12)
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  for(int c = 33; c <= 126; c++) 
+  {
+    cout << c << " ";    
+    char cAsChar = c;
+    cout << cAsChar << "\n";
+  }
+  
+  return 0;
+}
+
+
+
+
+
+
+
+// ============================================
+// Variables and Arrays (p. 13)
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  cout << "   0 1 2 3 4 5 6 7 8 9\n";
+  cout << " 3      ";
+
+  for(int c = 33; c <= 126; c++) 
+  {
+    if(c % 10 == 0)
+    {
+      if(c / 10 <= 9)
+        cout << " ";
+      cout << c / 10;
+    }
+    char cAsChar = c;
+    cout << " " << cAsChar;
+    if(c % 10 == 9)
+      cout << "\n";
+  }  
+  return 0;
+}
+
+
+
+
+
+
+// ============================================
+// Variables and Arrays (p. 17)
+
+int bad = 0;
+for(int i = 0; i < 100; i++)
+{
+  float f = sqrt(i);
+  cout << f << " " << f * f << " ";
+  
+  if(f * f != i)
+  {
+    cout << "!!!";
+    bad++;
+  }
+  cout << "\n";
+}
+cout << "bad precision: " << bad;
+
+
+
+
+
+
+// ============================================
+// Variables and Arrays (p. 18)
+
+#include<iostream>
+#include<cmath>
+#include<iomanip> // for setprecision()
+using namespace std;
+
+int main()
+{
+  for(int i = 0; i < 100; i++)
+  {
+    float f = sqrt(i);
+    cout << f << " " << setprecision(10) << f * f << " ";
+    cout << "\n";
+  }
+  return 0;
+}
+
+
+
+
+
+
+
+// ============================================
+// Variables and Arrays (p. 20)
+
+bool b = 0;
+cout << b << "\n"; 
+	
+b = 1; 
+cout << b << "\n"; 
+	
+b = 10; 
+cout << b << "\n"; 
+	
+b = 0.1; 
+cout << b << "\n"; 
+	
+b = -1;
+cout << b << "\n"; 
+
+
+
+
+
+
+
+// ============================================
+// Variables and Arrays (p. 29)
+
+int grade1 = 0, grade2 = 0;
+cin >> grade1 >> grade2;
+cout << (grade1 + grade2) / 2;
+
+
+
+
+
+
+// ============================================
+// Variables and Arrays (p. 35)
+
+int score[5];
+for(int i = 0; i < 5; i++)
+  cin >> score[i];
+for(int i = 0; i < 5; i++)
+  cout << score[i] << " ";
+
+
+
+
+
+
+// ============================================
+// Variables and Arrays (p. 38)
+
+int array[100]; 
+	
+for(int i = 0; i < 100; i++)
+{
+  cout << array[i] << " ";
+  if (i % 10 == 9)
+    cout << "\n";
+}
+
+
+
+
+
+
+
+// ============================================
+// Variables and Arrays (p. 39)
+
+int daysInMonth1[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}; 
+int daysInMonth2[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}; 
+cout << sizeof(daysInMonth2); // 4 * 12 = 48
+int daysInMonth3[12] = {31, 28, 31}; // nine 0s
+int daysInMonth4[3] = {1, 2, 3, 4}; // error! 
+
+
+
+
+
+
+
+// ============================================
+// Variables and Arrays (p. 40)
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+  int a[4] = {1, 2, 3, 4};
+  int b[4] = {4, 3, 2, 1};
+  
+  int ip = 0;
+  for(int i = 0; i < 4; i++)
+    ip += a[i] * b[i];
+  cout << ip << "\n";
+
+  return 0;
+}
+
+
+
+
+
+
+
+// ============================================
+// Variables and Arrays (p. 41)
+
+int array[100] = {0}; 
+	
+for (int i = 0; i < 500; i++)
+{
+  cout << array[i] << " ";
+  if (i % 10 == 9)
+    cout << "\n";
+}
+
+
+
+
+
+
+
+// ============================================
+// Variables and Arrays (p. 47)
+
+float value[10] = {0};
+for (int i = 0; i < 10; i++)
+  cin >> value[i];
+
+float max = value[0];
+for(int i = 1; i < 10; i++)
+{
+  if(value[i] > max)
+    max = value[i];
+}
+cout << max;
+
+
+
+
+
+
+
+// ============================================
+// Variables and Arrays (p. 56)
+
+int a[2][3] = {{1, 2, 3}, {1, 2, 3}};
+int b[2][3] = {{4, 5, 6}, {7, 8, 9}};
+int c[2][3] = {0};
+
+for (int i = 0; i < 2; i++) // matrix addition
+  for (int j = 0; j < 3; j++)
+    c[i][j] = a[i][j] + b[i][j];
+
+for(int i = 0; i < 2; i ++) // print out c
+{
+  for(int j = 0; j < 4; j ++)
+    cout << c[i][j] << " ";
+  cout << "\n";
+}
+
+
+
+
+
+
+
+// ============================================
+// Variables and Arrays (p. 57)
+
+int a[2][3] = {1, 1, 1, 2, 2, 2};
+int b[3][4] = {1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3};
+int c[2][4] = {0};
+  
+for(int i = 0; i < 2; i++)
+  for(int j = 0; j < 4; j++)
+    for(int k = 0; k < 3; k++)
+      c[i][j] += a[i][k] * b[k][j];
+  
+// print out c
+
+
+
+
+
+
+
+// ============================================
+// Variables and Arrays (p. 58)
+
+int a[2][3];
+cout << a << " " << a[0] << " " << a[1] << endl;
+
+
+
+
+
+
+
+// ============================================
+// Variables and Arrays (p. 59)
+
+int a[2][3];
+cout << a << " " << a[0] << "\n";
+cout << a[1] << " " << a + 1 << "\n";
+cout << sizeof(a) << " " << sizeof(a[0]) << "\n";
+
+
+
+
+ 
+
+
+
+
+
+
